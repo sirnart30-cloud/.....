@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <title>เกมทายสายบุคลิก 🐶</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
 <style>
-/* ====== พื้นหลัง 4 พาร์ทเทล + ลายดอกไม้ ====== */
 body {
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-family: 'Baloo 2', cursive, sans-serif;
   background: 
     linear-gradient(to bottom right, #ffe6f0 50%, #ffd6e8 50%) top left / 50% 50% no-repeat,
     linear-gradient(to bottom right, #ffd6e8 50%, #ffe6f0 50%) top right / 50% 50% no-repeat,
@@ -15,84 +15,84 @@ body {
     url('https://i.imgur.com/9f0F8kD.png');
   background-repeat: repeat;
   background-size: cover;
-  padding: 20px;
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   text-align:center;
   color: #333;
 }
-h1 {
-  text-align: center;
-  color: #fff;
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-}
-/* ====== คำถาม ====== */
+#quiz { width: 90%; max-width: 900px; }
 .question {
-  margin-bottom: 20px;
-  background: rgba(255,255,255,0.9);
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  margin-bottom: 30px;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 40px;
+  border-radius: 30px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  font-size: 1.5em;
   transition: transform 0.2s;
 }
-.question:hover { transform: scale(1.02); }
-
-/* ====== ตัวเลือก 4 พาร์ทเทล ====== */
+.question:hover { transform: scale(1.03); }
 .answers {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-top: 15px;
+  gap: 20px;
+  margin-top: 20px;
 }
 .answers button {
-  padding: 15px;
-  font-size: 16px;
-  border-radius: 12px;
+  padding: 25px;
+  font-size: 1.4em;
+  border-radius: 20px;
   border: none;
   font-weight: bold;
-  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  background: linear-gradient(45deg, #ff99cc, #ff66b2);
   color: white;
+  cursor:pointer;
   transition: all 0.2s;
 }
-.answers button:hover {
-  transform: translateY(-3px);
-  background: linear-gradient(45deg, #2575fc, #6a11cb);
-}
-
-/* ====== ผลลัพธ์ ====== */
+.answers button:hover { transform: translateY(-5px); background: linear-gradient(45deg, #ff66b2, #ff99cc); }
 #result {
-  margin-top: 30px;
-  font-size: 18px;
+  margin-top: 40px;
+  font-size: 1.5em;
   font-weight: bold;
   white-space: pre-line;
-  background: rgba(255,255,255,0.9);
-  padding:20px;
-  border-radius:15px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-  max-width:600px;
+  background: rgba(255,255,255,0.95);
+  padding:50px 40px;
+  border-radius:30px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  max-width:900px;
   margin-left:auto;
   margin-right:auto;
   text-align:left;
 }
 #resetBtn {
-  margin-top:20px;
-  padding:12px 25px;
+  margin-top:30px;
+  padding:18px 45px;
   border:none;
-  border-radius:10px;
+  border-radius:20px;
   background: #ff6b6b;
   color:white;
   cursor:pointer;
   font-weight:bold;
+  font-size:1.2em;
   transition: all 0.2s;
 }
 #resetBtn:hover { transform: scale(1.05); background:#ff4c4c; }
+h1 {
+  text-align: center;
+  color: #fff;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+  margin-bottom: 40px;
+  font-size:3em;
+}
 </style>
 </head>
 <body>
-
 <h1>🎉 เกมทายสายบุคลิก 🐶</h1>
 <div id="quiz"></div>
 <div id="result"></div>
 <button id="resetBtn" style="display:none;" onclick="resetQuiz()">เล่นอีกครั้ง 🔄</button>
-
 <script>
 // ======= 30 คำถาม =======
 const questions = [
@@ -126,7 +126,7 @@ const questions = [
 {q:"เวลามีคนใหม่เข้ามา คุณทำอย่างไร?", a:["A: เข้าไปสนุกด้วย 😆","B: ช่วยให้เขารู้สึกอบอุ่น 💕","C: สังเกตแบบสงบ 👀","D: พูดคุยแลกเปลี่ยนความคิด 💬"]}
 ];
 
-// ======= 10 สายบทสรุป =======
+// ======= 10 สายบุคลิก =======
 const descriptions = {
 "หมาซน": "คุณเป็นหมาซน 🐶💥 ร่าเริง ขี้เล่น มีพลังงานสูง ชอบลองสิ่งใหม่ ๆ และผจญภัยกับเพื่อนอยู่เสมอ\n\nคำแนะนำ: สนุกได้ แต่ควรวางแผนเล็กน้อยเพื่อความปลอดภัย",
 "หมาใจดี": "คุณเป็นหมาใจดี 🐶💖 รอบคอบ อ่อนโยน ชอบช่วยเหลือคนอื่น\n\nคำแนะนำ: บางครั้งควรปล่อยตัวเองสนุกบ้างเพื่อชีวิตสดใส",
@@ -171,10 +171,24 @@ function showQuestion(){
 
 // ======= แสดงผลลัพธ์ =======
 function showResult(){
-  let scoreMap = { "หมาซน": answersCount["a"], "หมาใจดี": answersCount["b"], "หมาชิลล์": answersCount["c"], "หมาหัวไว": answersCount["d"] };
+  // แมปคะแนนไปสายบุคลิกแบบ weighted
+  const mapping = {
+    "a":["หมาซน","หมาเด็กขี้เล่น","หมาเซอร์ไพรส์"],
+    "b":["หมาใจดี","หมาเจ้าพ่อเกม","หมาใจนักสู้"],
+    "c":["หมาชิลล์","หมาสายแฟนตาซี"],
+    "d":["หมาหัวไว","หมาอันตรายแอบซ่อนความร้าย"]
+  };
+
   let weightedArray = [];
-  for(let key in scoreMap){ for(let i=0;i<scoreMap[key];i++){ weightedArray.push(key); } }
-  if(weightedArray.length === 0){ weightedArray = ["หมาซน","หมาใจดี","หมาชิลล์","หมาหัวไว"]; }
+  for(let key in answersCount){
+    let weight = answersCount[key];
+    mapping[key].forEach(type=>{
+      for(let i=0;i<weight;i++){ weightedArray.push(type); }
+    });
+  }
+
+  if(weightedArray.length === 0){ weightedArray = Object.keys(descriptions); }
+
   const finalType = weightedArray[Math.floor(Math.random()*weightedArray.length)];
   const desc = descriptions[finalType];
 
@@ -183,18 +197,8 @@ function showResult(){
   document.getElementById("resetBtn").style.display="inline-block";
 }
 
-// ======= เล่นอีกครั้ง =======
+// ======= รีเซ็ต =======
 function resetQuiz(){
   answersCount = {a:0,b:0,c:0,d:0};
   currentQuestion = 0;
-  document.getElementById("quiz").style.display="block";
-  document.getElementById("result").innerText="";
-  document.getElementById("resetBtn").style.display="none";
-  showQuestion();
-}
-
-// ======= เริ่มเกม =======
-showQuestion();
-</script>
-</body>
-</html>
+  document.getElementById("quiz").style
